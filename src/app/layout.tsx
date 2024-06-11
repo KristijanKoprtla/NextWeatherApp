@@ -31,6 +31,7 @@ const RootLayout = ({
 						}}
 					>
 						<Navbar />
+
 						<Box component="main" sx={{ flexGrow: 1 }}>
 							{children}
 						</Box>

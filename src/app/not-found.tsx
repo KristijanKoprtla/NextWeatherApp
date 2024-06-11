@@ -13,7 +13,7 @@ const Custom404 = () => {
 			height="70vh"
 		>
 			<Typography component="h1" variant="h2">
-				404 - Page Not Found
+				Page Not Found
 			</Typography>
 			<Button variant="contained" color="success">
 				<Link href="/">Go back to Home</Link>

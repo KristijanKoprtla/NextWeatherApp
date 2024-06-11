@@ -62,41 +62,35 @@ export default async function Home({ searchParams }: HomeProps) {
 				<SearchCity />
 			</Box>
 			<Box sx={{ flexGrow: 1, marginTop: '10rem', marginBottom: '2rem' }}>
-				{!forecast ? (
-					<Typography component="h2" variant="h2">
-						No city found
-					</Typography>
-				) : (
-					<Grid container spacing={4} justifyContent="center">
-						{forecast.map((day, index: number) => (
-							<Grid item key={index} xs={12} sm={isOddNumberOfItems && index === forecast.length - 1 ? 9 : 6} lg={4}>
-								<Link href={`/forecast/${data.location.name}/${day.date}`}>
-									<Paper
-										elevation={6}
-										sx={{
-											padding: 5,
-											minHeight: 120,
-											display: 'flex',
-											alignItems: 'center',
-											justifyContent: 'center',
-											backgroundImage:
-												day.chance_of_rain && day.chance_of_rain > 35
-													? 'linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0, 0.749)), url(https://images.pexels.com/photos/2259232/pexels-photo-2259232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'
-													: 'linear-gradient(rgba(78, 78, 78, 0.365), rgba(0, 0, 0, 0.134)), url(https://ktar.com/wp-content/uploads/2019/02/phoenix-weather.jpg)',
-											color: '#ffffff',
-										}}
-									>
-										<Typography>
-											Temperatura u <strong>{data.location.name}</strong> za {day.date} u {targetHourString}:00 je:{' '}
-											{day.temp} °C a vrijeme je <Image src={day.icon} alt="slikica" width={25} height={25} />{' '}
-											{day.condition}.
-										</Typography>
-									</Paper>
-								</Link>
-							</Grid>
-						))}
-					</Grid>
-				)}
+				<Grid container spacing={4} justifyContent="center">
+					{forecast.map((day, index: number) => (
+						<Grid item key={index} xs={12} sm={isOddNumberOfItems && index === forecast.length - 1 ? 9 : 6} lg={4}>
+							<Link href={`/forecast/${data.location.name}/${day.date}`}>
+								<Paper
+									elevation={6}
+									sx={{
+										padding: 5,
+										minHeight: 120,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										backgroundImage:
+											day.chance_of_rain && day.chance_of_rain > 35
+												? 'linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0, 0.749)), url(https://images.pexels.com/photos/2259232/pexels-photo-2259232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'
+												: 'linear-gradient(rgba(78, 78, 78, 0.365), rgba(0, 0, 0, 0.134)), url(https://ktar.com/wp-content/uploads/2019/02/phoenix-weather.jpg)',
+										color: '#ffffff',
+									}}
+								>
+									<Typography>
+										Temperatura u <strong>{data.location.name}</strong> za {day.date} u {targetHourString}:00 je:{' '}
+										{day.temp} °C a vrijeme je <Image src={day.icon} alt="slikica" width={25} height={25} />{' '}
+										{day.condition}.
+									</Typography>
+								</Paper>
+							</Link>
+						</Grid>
+					))}
+				</Grid>
 			</Box>
 		</>
 	);
